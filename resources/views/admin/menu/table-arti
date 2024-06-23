@@ -1,0 +1,87 @@
+ <table class="w-full border-collapse border border-gray-200">
+     <thead>
+         <tr class="bg-gray-100">
+             <th class="px-4 py-2">ID</th>
+             <th class="px-4 py-2">Title</th>
+             <th class="px-4 py-2">Status</th>
+             <th class="px-4 py-2">Content</th>
+             <th class="px-4 py-2">Action</th>
+         </tr>
+     </thead>
+     <tbody>
+         @foreach($article as $art)
+         <tr class="bg-gray-50">
+             <td class="border px-4 py-2">{{ $art->id }}</td>
+             <td class="border px-4 py-2">{{ $art->title }}</td>
+             <td class="border px-4 py-2">{{ $art->status }}</td>
+             <td class="border px-4 py-2 " style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                 <div class="custom-scrollbar">
+                     {{ $art->content }}
+                 </div>
+             </td>
+             <td class="border px-4 py-2">
+                 <div class="flex">
+                     <a href="{{ route('article.edit', $art->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                     <button type="button" class="tw-bg-red-500 hover:tw-bg-red-600 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded" onclick="handleDelete(this)" data-id="{{$art->id}}" data-action="category"><i class="fa-solid fa-trash"></i></button>
+                 </div>
+             </td>
+         </tr>
+         @endforeach
+     </tbody>
+ </table>
+
+
+
+ <table class="w-full border-collapse border border-gray-200">
+     <thead class="bg-slate-500 text-white">
+         <tr class="bg-gray-100">
+             <th class="px-4 py-2">ID</th>
+             <th class="px-4 py-2">Category Name</th>
+             <th class="px-4 py-2">Description</th>
+             <th class="px-4 py-2">Action</th>
+         </tr>
+     </thead>
+     <tbody>
+         @foreach($categories as $category)
+         <tr class="bg-gray-50">
+             <td class="border px-4 py-2">{{ $category->id }}</td>
+             <td class="border px-4 py-2">{{ $category->name }}</td>
+             <td class="border px-4 py-2">{{ $category->description }}</td>
+             <td class="border px-4 py-2">
+                 <div class="flex">
+                     <a href="{{ route('category.edit', $category->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Edit</a>
+                     <a href="{{ route('category.delete', $category->id) }}" class="text-white font-bold py-2 px-4 border border-red-700 rounded deleteButton" style="background-color: rgb(239 68 68);"><i class="fa-solid fa-trash"></i></a>
+                 </div>
+             </td>
+         </tr>
+         @endforeach
+     </tbody>
+ </table>
+
+ <table class="w-full border-collapse border border-gray-200">
+     <thead class="text-xs text-gray-50 uppercase tw-bg-gray-900">
+         <tr class="bg-gray-100">
+             <th class="px-4 py-2">ID</th>
+             <th class="px-4 py-2">Full Name</th>
+             <th class="px-4 py-2">Email</th>
+             <th class="px-4 py-2">Join Date</th>
+             <th class="px-4 py-2">Action</th>
+         </tr>
+     </thead>
+     <tbody>
+         @foreach($viewAccount as $Acc)
+         <tr class="bg-gray-50">
+             <td class="border px-4 py-2">{{ $Acc->id }}</td>
+             <td class="border px-4 py-2">{{ $Acc->full_name }}</td>
+             <td class="border px-4 py-2">{{ $Acc->email }}</td>
+             <td class="border px-4 py-2">{{ $Acc->created_at }}<br>Roles: {{$Acc->role}}</td>
+             <td class="border px-4 py-2">
+                 <div class="flex">
+                     <a href="{{ route('category.edit', $Acc->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                     <a href="{{ route('category.delete', $Acc->id) }}" class="text-white font-bold py-2 px-4 border border-red-700 rounded" style="background-color: rgb(239 68 68);" id="deleteButton"><i class="fa-solid fa-trash"></i></a>
+                 </div>
+             </td>
+         </tr>
+         @endforeach
+     </tbody>
+ </table>

@@ -20,7 +20,6 @@ class CKEditorController extends Controller
             $url = asset('uploads/' . $fileName);
             $msg = 'Image uploaded successfully';
             $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-
             @header('Content-type: text/html; charset=utf-8');
             echo $re;
         }

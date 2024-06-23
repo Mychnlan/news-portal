@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}" />
-    <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}" />
+    <link rel="apple-touch-icon" sizes="76x76" style="border-radius: 10px;" href="{{asset('my_logo.jpeg')}}" />
+    <link rel="icon" type="image/png" href="{{asset('my_logo.jpeg')}}" style="border-radius: 10px; />
     <title>Dashboard</title>
   @include('layout.partials.link')
   </head>

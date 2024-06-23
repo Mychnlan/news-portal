@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class LoginController extends Controller
@@ -16,7 +18,7 @@ class LoginController extends Controller
             // } else if ($user->role == 'author') {
             //     return redirect()->intended('author');
             // }
-            return redirect()->intended('home');
+            return redirect()->intended('/dashboard');
         }
         return view('login.view_login');
     }
@@ -37,7 +39,7 @@ class LoginController extends Controller
             if ($user->role == 'admin') {
                 return redirect()->intended('admin/dashboard');
             } else if ($user->role == 'author') {
-                return redirect()->intended('author');
+                return redirect()->intended('/dashboard');
             }
 
             return redirect()->intended('/');
@@ -55,5 +57,9 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+    public function register()
+    {
+        return view('login.view_register');
     }
 }
